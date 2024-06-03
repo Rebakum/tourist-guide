@@ -1,0 +1,67 @@
+[
+  {
+    "photoUrls": [
+      " https://plus.unsplash.com/premium_photo-1661913048770-254543a0adec?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1551615218-33580b595050?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3Dg",
+      "https://images.unsplash.com/photo-1540018177157-957400dbd08a?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    ],
+    "tourType": "Adventure",
+    "title": "Sundarbans Adventure",
+    "heading": "Explore the World's Largest Mangrove Forest",
+    "description": "The Sundarbans, a UNESCO World Heritage Site, is a vast mangrove forest located in the delta region of Padma, Meghna, and Brahmaputra river basins. Experience the wild beauty of the Sundarbans, home to the Royal Bengal Tiger and a diverse range of flora and fauna.",
+    "price": 250,
+    "category": "wildlife"
+  },
+  {
+    "photoUrls": [
+      "https://images.unsplash.com/photo-1624395149011-470cf6f6ec02?q=80&w=1951&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://hblimg.mmtcdn.com/content/hubble/img/dhakaImage/mmt/activities/m_national_museum_bangladesh_dhaka_1_l_480_640.jpg",
+      "https://www.google.com/imgres?imgurl=http%3A%2F%2Fwww.travelmate.com.bd%2Fwp-content%2Fuploads%2F2019%2F04%2FDhaka-City-At-Night-1024x683.jpg.webp&tbnid=do_Qkm3MDH_GrM&vet=12ahUKEwji9L7R-7uGAxXVW2cHHQhNAV4QxiAoBnoECAAQIw..i&imgrefurl=https%3A%2F%2Fwww.travelmate.com.bd%2F9-things-to-do-in-dhaka-city-you-should-not-miss%2F&docid=nVzmycKgIHiYTM&w=1024&h=683&itg=1&q=the%20best%20imge%20of%20dhaka&ved=2ahUKEwji9L7R-7uGAxXVW2cHHQhNAV4QxiAoBnoECAAQIw"
+    ],
+    "tourType": "Cultural",
+    "title": "Dhaka City Tour",
+    "heading": "Discover the Rich Culture of Dhaka",
+    "description": "Explore the vibrant capital city of Bangladesh, Dhaka. This tour takes you through the historical and cultural landmarks of the city, including the Lalbagh Fort, Ahsan Manzil, and the bustling streets of Old Dhaka.",
+    "price": 150,
+    "category": "city"
+  },
+  {
+    "photoUrls": [
+      "https://tourrom.com/wp-content/uploads/2019/01/coxbazaar.gif",
+      " https://plus.unsplash.com/premium_photo-1661913048770-254543a0adec?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://tourrom.com/wp-content/uploads/2019/01/Maheshkali.jpg"
+    ],
+    "tourType": "Relaxation",
+    "title": "Cox's Bazar Beach",
+    "heading": "Relax at the Longest Sea Beach in the World",
+    "description": "Cox's Bazar is renowned for its 120 km long sandy beach, making it the longest natural sea beach in the world. Enjoy a serene getaway with breathtaking views of the Bay of Bengal, luxury resorts, and local seafood delicacies.",
+    "price": 200,
+    "category": "beach"
+  },
+  {
+    "photoUrls": [
+      "https://img.freepik.com/free-photo/island-seen-from-sea_1286-148.jpg?t=st=1717299196~exp=1717302796~hmac=cd5aca22430f8ca2d5f297248d3a8cbdaa633330bce141de239ea3e5e51138f8&w=360",
+      "https://img.freepik.com/free-photo/summer-tourists-coast-view-shore_1253-807.jpg?t=st=1717299115~exp=1717302715~hmac=7ca7599cd68e7dab84e473c617639f714544e569d42f3d1a74b94a067b6b0cad&w=1060",
+      "https://as2.ftcdn.net/v2/jpg/06/76/48/89/1000_F_676488944_qgSlHxLi64EBmAVHCkL28mSxfxdLpgQL.jpg"
+    ],
+    "tourType": "Relaxation",
+    "title": "Saint Martin Island Getaway",
+    "heading": "Experience the Pristine Beauty of Saint Martin Island",
+    "description": "Saint Martin Island, also known as Narikel Jinjira, is a small island in the northeastern part of the Bay of Bengal. This idyllic island is perfect for snorkeling, sunbathing, and exploring coral reefs and marine life.",
+    "price": 300,
+    "category": "island"
+  },
+  {
+    "photoUrls": [
+      "https://file.mofa.gov.bd/media/01e0df8b-6150-40b4-a75f-1e7a5b8c1f63/uploaded-files/maxresdefault-1.jpg",
+      "https://cosmosgroup.sgp1.digitaloceanspaces.com/news/9782559_best%20tea%20gardens%20Bangladesh.jpg",
+      "https://pathfriend-bd.com/wp-content/uploads/2019/08/Tea-Capital-Sylhet-2-150x150.gif"
+    ],
+    "tourType": "Nature",
+    "title": "Sylhet Tea Gardens Tour",
+    "heading": "Immerse Yourself in the Lush Greenery of Sylhet",
+    "description": "Sylhet is famous for its picturesque tea gardens, lush green hills, and natural beauty. This tour offers a chance to visit the tea estates, explore the local culture, and enjoy the scenic landscapes of Sylhet.",
+    "price": 180,
+    "category": "nature"
+  }
+]
