@@ -9,7 +9,14 @@
     "title": "Sundarbans Adventure",
     "heading": "Explore the World's Largest Mangrove Forest",
     "description": "The Sundarbans, a UNESCO World Heritage Site, is a vast mangrove forest located in the delta region of Padma, Meghna, and Brahmaputra river basins. Experience the wild beauty of the Sundarbans, home to the Royal Bengal Tiger and a diverse range of flora and fauna.",
-    "price": 250,
+    "price": [300,500, 700, 700],
+    "day":[
+      "two day: ",
+      "three day:",
+      "five day: ",
+      "seven day: "
+      
+    ],
     "category": "wildlife"
   },
   {
@@ -22,7 +29,14 @@
     "title": "Dhaka City Tour",
     "heading": "Discover the Rich Culture of Dhaka",
     "description": "Explore the vibrant capital city of Bangladesh, Dhaka. This tour takes you through the historical and cultural landmarks of the city, including the Lalbagh Fort, Ahsan Manzil, and the bustling streets of Old Dhaka.",
-    "price": 150,
+    "price": [300,500, 700, 700],
+    "day":[
+      "two day:",
+      "three day:",
+      "five day: ",
+      "seven day: "
+      
+    ],
     "category": "city"
   },
   {
@@ -35,7 +49,14 @@
     "title": "Cox's Bazar Beach",
     "heading": "Relax at the Longest Sea Beach in the World",
     "description": "Cox's Bazar is renowned for its 120 km long sandy beach, making it the longest natural sea beach in the world. Enjoy a serene getaway with breathtaking views of the Bay of Bengal, luxury resorts, and local seafood delicacies.",
-    "price": 200,
+    "price": [300,500, 700, 700],
+    "day":[
+      "two day:",
+      "three day:",
+      "five day: ",
+      "seven day: "
+      
+    ],
     "category": "beach"
   },
   {
@@ -48,8 +69,15 @@
     "title": "Saint Martin Island Getaway",
     "heading": "Experience the Pristine Beauty of Saint Martin Island",
     "description": "Saint Martin Island, also known as Narikel Jinjira, is a small island in the northeastern part of the Bay of Bengal. This idyllic island is perfect for snorkeling, sunbathing, and exploring coral reefs and marine life.",
-    "price": 300,
-    "category": "island"
+    "price": [300,500, 700, 700],
+    "category": "island",
+    "day":[
+      "two day:",
+      "three day:",
+      "five day: ",
+      "seven day: "
+      
+    ]
   },
   {
     "photoUrls": [
@@ -61,7 +89,15 @@
     "title": "Sylhet Tea Gardens Tour",
     "heading": "Immerse Yourself in the Lush Greenery of Sylhet",
     "description": "Sylhet is famous for its picturesque tea gardens, lush green hills, and natural beauty. This tour offers a chance to visit the tea estates, explore the local culture, and enjoy the scenic landscapes of Sylhet.",
-    "price": 180,
+    "price": [300,500, 700, 700],
+    "day":[
+      "two day:",
+      "three day:",
+      "five day: ",
+      "seven day: "      
+    ],
+    
     "category": "nature"
+
   }
 ]

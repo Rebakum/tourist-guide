@@ -2,33 +2,37 @@ import { useEffect, useState } from "react";
 import AllPakesCard from "./AllPakagesCard/AllPakesCard";
 import { Helmet } from "react-helmet";
 import SectionTitle from "../../../Shared/Navbar/SectionTitle";
+import axios from "axios";
 
 
 const AllPakages = () => {
     const [tours, setTours] = useState([]);
 
     useEffect(() => {
-        const data = async () =>{
-            const {data} = await axios
+        const getData = async () =>{
+            const {data} = await axios(`${import.meta.env.VITE_API_URL}/tours`)
+            setTours(data);
         }
-        fetch(`${import.meta.env.VITE_API_URL}/tours`)
-            // fetch('http://localhost:5000/tours')
-            .then(res => res.json())
-            .then(data => {
-                console.log('Fetched tours data:', data);
-                setTours(data);
-            })
+        getData()
+       
+       
+            
 
-    }, [tours]);
+    }, []);
     return (
         <>
+        <Helmet>
+            <title>
+                T & T || ALL PAKAGE
+            </title>
+        </Helmet>
             <div className="py-20">
                 <SectionTitle
                     subheading="T&T is a specific category"
                     heading=" ALL pakages Tourism and Travel Guide"
                     description="Although many people think travel and tourism are synonymous with hospitality, that’s not quite the case. More accurately, T&T is a specific category within the hospitality industry."></SectionTitle>
             
-            <div className="grid grid-cols-3 gap-5">
+            <div className="grid lg:grid-cols-3 md:grid-cols-2  grid-cols-1 gap-5">
                 {
                     tours.map(tour => <AllPakesCard key={tour._id} tour={tour}></AllPakesCard>
 

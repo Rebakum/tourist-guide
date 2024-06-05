@@ -1,20 +1,17 @@
-
-
-
-
-
-import { Link,  useLocation, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import { Link,  Navigate,  useLocation, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 import SocialLogin from "./SocialLogin";
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { useForm } from "react-hook-form";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location?.state || '/';
+    const path = location?.state?.from?.pathname || '/';
+    console.log(location)
     const { signInUser } = useContext(AuthContext);
 
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -26,7 +23,7 @@ const Login = () => {
             .then(result => {
                 toast.success('Yeah!! You are welcome');
                 if (result.user)
-                    setTimeout(() => navigate(from), 0);
+                    navigate(path)
             })
             .catch(error => {
                 console.log(error);
@@ -72,6 +69,7 @@ const Login = () => {
                             </div>
                         </form>
                        <SocialLogin></SocialLogin>
+                    
                     </div>
                 </div>
             </div>
