@@ -6,10 +6,9 @@ import useAxiosSecure from "../../../Hook/useAxiosSecure";
 
 
 const TourCard = ({ tour }) => {
-  const { photoUrls, tourType, title, tourGuide, tourPlan, _id } = tour;
+  const { photoUrls, tourType, title, guideName, guideImage,guideEmail, tourPlan, _id } = tour;
   const firstDayPackage = tourPlan[0]; 
-  const guides = tourGuide[0];
-
+  
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure()
   const location = useLocation();
@@ -24,8 +23,7 @@ const TourCard = ({ tour }) => {
         tourId: _id,
         photoUrls,
         tourType,
-        title,
-        tourGuide,
+        title,       
         tourPlan
       };
       console.log(tourData)
@@ -86,11 +84,11 @@ const TourCard = ({ tour }) => {
       <div className="flex justify-between items-center gap-0  ">
         
         <div>
-          <img className="size-12 rounded-full my-3" src={guides.image} alt="Guide" />
+          <img className="size-12 rounded-full my-3" src={guideImage} alt="Guide" />
           </div>
         <div>
-        <p>{guides.name}</p>
-        <p>{guides.email}</p>
+        <p>{guideName}</p>
+        <p>{guideEmail}</p>
         </div>
       </div>
       <div className="">

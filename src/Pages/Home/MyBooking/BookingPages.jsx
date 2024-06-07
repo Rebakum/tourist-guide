@@ -1,19 +1,31 @@
-import React, { useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useNavigate } from 'react-router-dom';
 import Modal from 'react-modal';
 import { AuthContext } from '../../../AuthProvider/AuthProvider';
+import useAxiosSecure from '../../../Hook/useAxiosSecure';
+import { useQuery } from '@tanstack/react-query';
+import { FaUser } from 'react-icons/fa';
 
 const BookingPages = ({ tour }) => {
-    const { title, tourGuide, tourPlan } = tour;
+    const { title, tourPlan } = tour;
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
     const [tourDate, setTourDate] = useState(null);
-    const [guideName, setGuideName] = useState('');
+    const [selectedGuideName, setSelectedGuideName] = useState('');  // Add this line
     const [selectedPrice, setSelectedPrice] = useState('');
     const [selectedDay, setSelectedDay] = useState('');
     const [modalIsOpen, setModalIsOpen] = useState(false);
+    const axiosSecure = useAxiosSecure();
+    const { data: guides = [] } = useQuery({
+        queryKey: ['guides'],
+        queryFn: async () => {
+            const response = await axiosSecure.get('/guides');
+            console.log(response.data);
+            return response.data;
+        }
+    });
 
     const handleBookNow = (e) => {
         e.preventDefault();
@@ -26,16 +38,37 @@ const BookingPages = ({ tour }) => {
 
     const closeModal = () => {
         setModalIsOpen(false);
-        navigate('/my-bookings');
+        navigate('/dashboard/booking');
+    };
+
+    const confirmBooking = async () => {
+        const bookingData = {
+            title,
+            touristName: user.displayName,
+            touristEmail: user.email,
+            touristImage: user.photoURL,
+            tourDate: tourDate?.toISOString(),  // Use toISOString() instead of toJSONString()
+            guideName: selectedGuideName,
+            price: selectedPrice,
+            day: selectedDay
+        };
+
+        try {
+            const response = await axiosSecure.post('/bookings', bookingData);
+            console.log(response.data);
+            closeModal();
+        } catch (error) {
+            console.error('Error creating booking:', error);
+        }
     };
 
     return (
         <div className="p-4">
-            <h2 className="text-2xl font-bold my-4">Book Your Tour</h2>
+            <h2 className="text-2xl font-bold my-4 text-white text-center">Book Your Tour</h2>
             <form onSubmit={handleBookNow}>
                 <div className="flex justify-center items-center mb-4">
                     <div className="w-1/2 p-2">
-                        <label className="block text-gray-700 mb-2">Package Name</label>
+                        <label className="block text-white mb-2">Package Name</label>
                         <input
                             type="text"
                             value={title}
@@ -44,7 +77,7 @@ const BookingPages = ({ tour }) => {
                         />
                     </div>
                     <div className="w-1/2 p-2">
-                        <label className="block text-gray-700 mb-2">Tourist Name</label>
+                        <label className="block text-white mb-2">Tourist Name</label>
                         <input
                             type="text"
                             value={user?.displayName || 'User name not found'}
@@ -55,7 +88,7 @@ const BookingPages = ({ tour }) => {
                 </div>
                 <div className="flex justify-center items-center mb-4">
                     <div className="w-1/2 p-2">
-                        <label className="block text-gray-700 mb-2">Tourist Email</label>
+                        <label className="block text-white mb-2">Tourist Email</label>
                         <input
                             type="text"
                             value={user?.email}
@@ -64,9 +97,9 @@ const BookingPages = ({ tour }) => {
                         />
                     </div>
                     <div className="w-1/2 p-2">
-                        <label className="block text-gray-700 mb-2">Tourist Image</label>
+                        <label className="block text-white mb-2">Tourist Image</label>
                         <img
-                            src={user?.photoURL}
+                            src={user?.photoURL || <FaUser/>}
                             alt="Tourist"
                             className="w-16 h-16 rounded-full"
                         />
@@ -74,53 +107,53 @@ const BookingPages = ({ tour }) => {
                 </div>
                 <div className="flex justify-center items-center mb-4">
                     <div className="w-1/2 p-2">
-                        <label className="block text-gray-700 mb-2">Price</label>
+                        <label className="block text-white mb-2">Price</label>
                         <select
                             value={selectedPrice}
                             onChange={e => setSelectedPrice(e.target.value)}
                             className="w-full p-2 border rounded-lg"
                         >
                             <option value="">Select a price plan</option>
-                            {tourPlan.map(plan => (
-                                <option key={plan.name} value={plan.price}>
-                                    {plan.name}  {plan.price}
+                            {tourPlan?.map(plan => (
+                                <option key={plan.name} value={plan.price}> {/* Change the value to plan.price */}
+                                    {plan.name} {plan.price}
                                 </option>
                             ))}
                         </select>
                     </div>
                     <div className="w-1/2 p-2">
-                        <label className="block text-gray-700 mb-2">Day</label>
+                        <label className="block text-white mb-2">Day</label>
                         <select
                             value={selectedDay}
                             onChange={e => setSelectedDay(e.target.value)}
                             className="w-full p-2 border rounded-lg"
                         >
                             <option value="">Select a day plan</option>
-                            {tourPlan.map(plan => (
-                                <option key={plan.name} value={plan.day}>
-                                    {plan.name}  {plan.day} days 
+                            {tourPlan?.map(plan => (
+                                <option key={plan.day} value={plan.day}>
+                                    {plan.name} {plan.day} days
                                 </option>
                             ))}
                         </select>
                     </div>
                 </div>
                 <div className="mb-4 p-2">
-                    <label className="block text-gray-700 mb-2">Tour Guide Name</label>
+                    <label className="block text-white mb-2">Tour Guide Name</label>
                     <select
-                        value={guideName}
-                        onChange={e => setGuideName(e.target.value)}
+                        value={selectedGuideName}  // Set the value attribute
+                        onChange={e => setSelectedGuideName(e.target.value)}  // Add this line
                         className="w-full p-2 border rounded-lg"
                     >
                         <option value="">Select a guide</option>
-                        {tourGuide.map(guide => (
-                            <option key={guide.name} value={guide.name}>
-                                {guide.name}
+                        {guides?.map(guide => (
+                            <option key={guide._id} value={guide.guideName}>  {/* Set the value attribute to guide.guideName */}
+                                {guide.guideName}  {/* Display the guide name */}
                             </option>
                         ))}
                     </select>
                 </div>
                 <div className="mb-4 p-2">
-                    <label className="block text-gray-700 mb-2">Tour Date</label>
+                    <label className="block text-white mb-2">Tour Date</label>
                     <DatePicker
                         selected={tourDate}
                         onChange={date => setTourDate(date)}
@@ -149,12 +182,12 @@ const BookingPages = ({ tour }) => {
                 <p><strong>Package:</strong> {title}</p>
                 <p><strong>Tourist Name:</strong> {user?.displayName}</p>
                 <p><strong>Tour Date:</strong> {tourDate?.toLocaleDateString()}</p>
-                <p><strong>Guide Name:</strong> {guideName}</p>
+                <p><strong>Guide Name:</strong> {selectedGuideName}</p>
                 <p><strong>Price:</strong> ${selectedPrice}</p>
                 <p><strong>Day:</strong> {selectedDay}</p>
                 <div className="flex justify-end mt-4">
                     <button
-                        onClick={closeModal}
+                        onClick={confirmBooking}  // Add confirmBooking function call
                         className="bg-green-500 text-white px-4 py-2 rounded-lg mr-2"
                     >
                         Confirm

@@ -1,15 +1,28 @@
 import { useLoaderData } from "react-router-dom";
 import SectionTitle from "../../../../Shared/Navbar/SectionTitle";
 import BookingPages from "../../MyBooking/BookingPages";
+import GuideList from "./GuideList";
+
 
 const TourDetails = () => {
+    // const axiosSecure = useAxiosSecure();
     const tour = useLoaderData();
-    const { photoUrls, tourType,  title,
-        description, heading, tourGuide, tourPlan, _id } = tour || {};
+    //  const { data: guides = [] } = useQuery({
+    //     queryKey: ['guides'],
+    //     queryFn: async () => {
+    //         const respons = await axiosSecure.get('/guides');
+    //         console.log(respons.data)
+    //         return respons.data;
+    //     }
+    // })
+    const { photoUrls, tourType, title,
+        description, heading, tourPlan, } = tour || {};
 
     if (!photoUrls || photoUrls.length === 0) {
         return <div>No images available for this tour.</div>;
     }
+  
+   
 
     return (
         <>
@@ -43,31 +56,23 @@ const TourDetails = () => {
                         <div className="flex-1 flex-col ">
                             {
                                 tourPlan.map(plan => <div key={plan.name}>
-                                <div className="flex flex-col  bg-cyan-400">
+                                    <div className="flex flex-col  bg-cyan-400">
                                         <div className="flex ">
-                                            <p>Day- {plan.day}:</p>
+                                            <p>Day {plan.day}:</p>
                                             <p> {plan.description}</p>
                                         </div>
                                         <p>Price: ${plan.price}</p>
                                     </div>
                                 </div>
-                                )  }                       
-
-                                <div>
-                                {
-                               tourGuide.map((guide,index)=>
-                                    <div key={guide.name} >
-                                        <p>{index+1} : {guide.name}</p>
-                                    </div>
-                                )
-                            }
-                                </div>                            
+                                )}
+                            <div>
+                                <GuideList></GuideList>
+                            </div>
                         </div>
-                        <div className="ml-10 bg-slate-500">
-                        <BookingPages 
-                        tour={tour}
-                        
-                        ></BookingPages>
+                        <div className="ml-10 bg-cyan-900">
+                            <BookingPages
+                                tour={tour}
+                            ></BookingPages>
                         </div>
                     </div>
                 </div>

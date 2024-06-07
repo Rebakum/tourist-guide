@@ -87,8 +87,9 @@ export const router = createBrowserRouter([
         element: <MyAssigned />,
       },
       {
-        path: 'guideProfile',
-        element: <GuideProfile />,
+        path: 'guideProfile/:id',
+        element: <GuideProfile />
+        // loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/guides/${params.id}`)
       }
     ]
   }

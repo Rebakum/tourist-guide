@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import TourCard from "./TourCard";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { Helmet } from "react-helmet";
+import SectionTitle from "../../../Shared/Navbar/SectionTitle";
 
 const TourList = () => {
     const [tours, setTours] = useState([]);
@@ -12,18 +14,20 @@ const TourList = () => {
             setTours(data.slice(0, 3));
         }
         getData()
-
-        // fetch(`${import.meta.env.VITE_API_URL}/tours`)
-        // // fetch('http://localhost:5000/tours')
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         console.log('Fetched tours data:', data);
-        //         setTours(data.slice(0, 3));
-        //     })
-
+    
     }, []);
     return (
         <div>
+            <Helmet>
+                <title>
+                    T & T || Our Pakage
+                </title>
+            </Helmet>
+            <SectionTitle
+            subheading="T & T"
+            heading="Our pakage"
+            description="Explore breathtaking destinations with our all-inclusive tour package, featuring guided excursions, comfortable accommodations, and immersive cultural experiences."
+            ></SectionTitle>
             <div className="grid lg:grid-cols-3 md:grid-cols-2  grid-cols-1 gap-5">
                 {
                     tours.map(tour => <TourCard key={tour._id} tour={tour}></TourCard>)

@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import useTour from "../../../Hook/useTour";
 import SectionTitle from "../../../Shared/Navbar/SectionTitle";
@@ -48,15 +47,15 @@ const MyWishList = () => {
                             <th>#</th>
                             <th>Tour Type</th>
                             <th>Title</th>
-                            <th>day 1</th>
-                            <th>day 2</th>
-                            <th>day 3</th>
+                            <th>Day 1</th>
+                            <th>Day 2</th>
+                            <th>Day 3</th>
                             <th>Delete</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody className="bg-cyan-200 border-2 border-cyan-950">
-                        {tourData.map((data, index) => (
+                        {tourData?.map((data, index) => (
                             <tr key={data._id}>
                                 <th>{index + 1}</th>
                                 <td>
@@ -72,12 +71,9 @@ const MyWishList = () => {
                                     </div>
                                 </td>
                                 <td>{data.title}</td>
-                                {
-                                    data.tourPlan.map(plan=>
-                                        <td key={plan.name}>${plan.price}</td>
-                                    )
-                                }
-                                
+                                {data.tourPlan?.map((plan, planIndex) => (
+                                    <td key={planIndex}>${plan.price}</td>
+                                ))}
                                 <td>
                                     <button
                                         onClick={() => handleDelete(data._id)}

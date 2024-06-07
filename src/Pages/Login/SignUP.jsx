@@ -37,7 +37,7 @@ const SignUP = () => {
                                     if (res.data.insertedId)
                                         console.log('user added the database')
                                     setUser(result.user)
-                                    setTimeout(ridiract, 1000)
+                                    setTimeout(ridiract, 0)
                                     toast.success('You have registered successfully')
                                 })
 

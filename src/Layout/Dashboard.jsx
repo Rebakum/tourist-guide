@@ -1,7 +1,9 @@
-import  { useEffect, useState } from "react";
+import {  useState } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import useAuth from "../Hook/useAuth";
 import useAxiosSecure from "../Hook/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
+import LoadingSpinner from "../Shared/Navbar/Loading/LoadingSpinner";
 
 const Dashboard = () => {
     const { logOut, user } = useAuth();
@@ -10,23 +12,31 @@ const Dashboard = () => {
     const [isAdmin, setIsAdmin] = useState(false);
     const [isGuide, setIsGuide] = useState(false);
 
-    useEffect(() => {
-        // Fetch user role from the database
-        const fetchUserRole = async () => {
-            const response = await axiosSecure.get(`/users/${user?.email}`);
-            const { role } = response.data;
-            if (role === 'admin') {
-                setIsAdmin(true);
-
-            } else if (role === 'tour guide') {
-                setIsGuide(true);
+    const { data: userData, isLoading } = useQuery({
+        queryKey: ['user', user?.email],
+        queryFn: async () => {
+            try {
+                const response = await axiosSecure.get(`/users/${user?.email}`);
+                const role = response.data?.role;
+                if (role === 'admin') {
+                    setIsAdmin(true);
+                } else if (role === 'tour guide') {
+                    setIsGuide(true);
+                }
+                return response.data;
+            } catch (error) {
+                console.error("Error fetching user role:", error);
+                if (error.response && error.response.status === 404) {
+                    console.log("User not found");
+                } else {
+                    console.log("An error occurred");
+                }
             }
-        };
-
-        if (user?.email) {
-            fetchUserRole();
         }
-    }, [user, axiosSecure]);
+    });
+    console.log(userData)
+
+    if (isLoading) return <div><LoadingSpinner/></div>;
 
     const handleLogout = () => {
         logOut();

@@ -5,88 +5,93 @@ import useAuth from "../../../../Hook/useAuth";
 import Swal from "sweetalert2";
 
 const AllPakesCard = ({ tour }) => {
-  const { photoUrls, tourType, title,tourGuide, tourPlan, _id } = tour;
+  const { photoUrls, tourType, title,
+    guideName, guideImage,
+    guideEmail, tourPlan, _id } = tour;
   const firstDayPackage = tourPlan[0]; // Extracting details for the first day
-  const guides = tourGuide[0]; // Extracting details for the first day
-const {user}= useAuth();
-const axiosSecure = useAxiosSecure();
-const location = useLocation();
-const navigate = useNavigate();
+  const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
+  const location = useLocation();
+  const navigate = useNavigate();
 
-const handleWishList = async () => {
-  if (user && user.email) {
-    // Send wishlist to database
-    const tourData = {
-      email: user.email,
-      tourId: _id,
-      photoUrls,
-      tourType,
-      title,
-      tourGuide,
-      tourPlan
-    };
-    console.log(tourData)
-   
-    try {
-      const response = await axiosSecure.post('wishLists', tourData);        
-      if (response.status === 200) {
+  const handleWishList = async () => {
+    if (user && user.email) {
+      // Send wishlist to database
+      const tourData = {
+        email: user.email,
+        tourId: _id,
+        photoUrls,
+        tourType,
+        guideName,
+        guideImage,
+        guideEmail,
+        title,
+        tourPlan
+      };
+      console.log(tourData)
+
+      try {
+        const response = await axiosSecure.post('/wishLists', tourData);
+        if (response.status === 200) {
+          Swal.fire({
+            title: "Added to Wishlist",
+            text: `${title} has been added to your wishlist!`,
+            icon: "success",
+            confirmButtonText: "Ok"
+          });
+          //refetch the cart
+
+        }
+      } catch (error) {
+        console.error('Error adding to wishlist:', error);
         Swal.fire({
-          title: "Added to Wishlist",
-          text: `${title} has been added to your wishlist!`,
-          icon: "success",
+          title: "Error",
+          text: "Failed to add to wishlist. Please try again later.",
+          icon: "error",
           confirmButtonText: "Ok"
         });
-        //refetch the cart
-       
       }
-    } catch (error) {
-      console.error('Error adding to wishlist:', error);
+    } else {
       Swal.fire({
-        title: "Error",
-        text: "Failed to add to wishlist. Please try again later.",
-        icon: "error",
-        confirmButtonText: "Ok"
+        title: "You are not logged in",
+        text: "Please log in to add to wishlist!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, login!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Send the user to the login page
+          navigate('/login', { state: { from: location } });
+        }
       });
     }
-  } else {
-    Swal.fire({
-      title: "You are not logged in",
-      text: "Please log in to add to wishlist!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, login!"
-    }).then((result) => {
-      if (result.isConfirmed) {
-        // Send the user to the login page
-        navigate('/login', { state: { from: location }});
-      }
-    });
-  }
 
-}
+  }
   return (
     <div className="relative max-w-sm overflow-hidden shadow-lg p-5 rounded-2xl m-4">
       <img className="w-full h-60 rounded-2xl object-cover" src={photoUrls[0]} alt={title} />
       <Link to="/dashboard/wishList">
-    <FaHeart
-    to="/dashboard/wishList"
-    onClick={ handleWishList} className="absolute top-2 mr-5 mt-5 right-2 text-red-500 z-10 cursor-pointer" /></Link>
+        <FaHeart
+          to="/dashboard/wishList"
+          onClick={handleWishList} className="absolute top-2 mr-5 mt-5 right-2 text-red-500 z-10 cursor-pointer" /></Link>
       <div className="px-6 py-4">
         <p className="font-bold text-xl mb-2">{title}</p>
         <p className="text-gray-700 text-base">{tourType}</p>
       </div>
       <div >
-          <h3 className="text-xl font-bold">Guide information:</h3>
+        <h3 className="text-xl font-bold">Guide information:</h3>
         <div className="flex justify-between items-center ">
-          
+
           <div>
-            <img className="size-12 rounded-full" src={guides.image} alt="Guide" />
-            </div>
+            <img className="size-12 rounded-full" src={guideImage} alt="Guide" />
+          </div>
           <div>
-          <p>{guides.name}</p>
-          <p>{guides.email}</p>
+            <p>{
+              guideName}</p>
+            <p>{
+              guideEmail}</p>
           </div>
         </div>
         <div>
