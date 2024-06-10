@@ -95,7 +95,7 @@ const MyBooking = () => {
                                     <span className="badge badge-ghost badge-sm">{booking.guideName}</span>
                                 </td>
                                 <td> ${booking.price}</td>
-                                <td> {booking.tourDate} day</td>
+                                <td>  {new Date(booking.tourDate).toLocaleDateString()} day</td>
                                 <td>{booking.status}</td>
                                 <th>
 
