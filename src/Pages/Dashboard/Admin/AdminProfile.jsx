@@ -1,34 +1,52 @@
+import { Helmet } from "react-helmet"
+import useAuth from "../../../Hook/useAuth"
+import useRole from "../../../Hook/useRole"
+import LoadingSpinner from "../../../Shared/Navbar/Loading/LoadingSpinner"
 
+const Profile = () => {
+  const { user, loading } = useAuth() || {}
+  const [role, isLoading] = useRole()
+  console.log('rol',role)
 
+  console.log(user)
+  if (isLoading || loading) return <LoadingSpinner />
+  return (
+    <div className='flex justify-center items-center h-screen'>
+      <Helmet>
+        <title> My Profile</title>
+      </Helmet>
+      
+      <div className='bg-white shadow-lg rounded-2xl w-3/5'>
+        <img
+          alt='profile'
+          src='https://img.freepik.com/premium-photo/empty-background-scene-dark-street-reflection-wet-asphalt-rays-neon-light-dark-neon-figures-smoke-background-empty-stage-show-abstract-dark-background_183410-31.jpg?w=900'
+          className='w-full mb-4 rounded-t-lg h-36'
+        />
+        <div className='flex flex-col items-center justify-center p-4 -mt-16'>
+          <a href='#' className='relative block'>
+            <img
+              alt='profile'
+              src={user?.photoURL}
+              className='mx-auto object-cover rounded-full h-24 w-24  border-2 border-white '
+            />
+          </a>
 
-const AdminProfile = () => {
-    return (
-        <div className="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-lg">
-            <div className="flex items-center">
-                <img src="path-to-user-image.jpg" alt="User Image" className="w-32 h-32 rounded-full object-cover mr-6" />
-                <div>
-                    <h2 className="text-2xl font-semibold">User Name</h2>
-                    <p className="text-gray-600">Email: user@example.com</p>
-                    <p className="text-gray-600">Location: City, Country</p>
-                </div>
+          <p className='p-2 uppercase px-4 text-xs text-white bg-btn rounded-full'>
+            {role}
+          </p>
+          <p className='mt-2 text-xl font-medium text-gray-800 '>
+            User Id: {user?.uid}
+          </p>
+          <div className='w-full p-2 mt-4 rounded-lg'>
+            <div className='text-center   text-xl text-cyan-950 '>
+              <p>Name: {user.displayName}</p>
+              <p>Email: {user.email}</p>
             </div>
-
-            <div className="mt-8">
-                <h3 className="text-xl font-semibold mb-4">Add a Story</h3>
-                <form action="/submit-story" method="POST">
-                    <div className="mb-4">
-                        <label htmlFor="title" className="block text-gray-700 mb-2">Story Title</label>
-                        <input type="text" id="title" name="title" className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required />
-                    </div>
-                    <div className="mb-4">
-                        <label htmlFor="story" className="block text-gray-700 mb-2">Story</label>
-                        <textarea id="story" name="story" rows="5" className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required></textarea>
-                    </div>
-                    <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Submit</button>
-                </form>
-            </div>
+          </div>
         </div>
-    );
-};
+      </div>
+    </div>
+  )
+}
 
-export default AdminProfile;
+export default Profile

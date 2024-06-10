@@ -4,3 +4,5 @@ export default {
     autoprefixer: {},
   },
 }
+// VITE_API_URL=https://tourist-guide-server-hazel.vercel.app                 
+// 

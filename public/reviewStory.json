@@ -1,0 +1,32 @@
+[
+    {
+        "image": "https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg",
+        "name": "Jane Doe",
+        "details": "Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like). It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+        "rating": 3
+    },
+    {
+        "image": "https://media.istockphoto.com/id/1437824159/photo/happy-small-business-woman-in-office-success-and-smile-in-startup-desk-with-computer-from.jpg?s=2048x2048&w=is&k=20&c=CzisaYovaQl6bdJ0VHLSMf7-bxry6c8e6MoLKIytKiY=",
+        "name": "John Doe",
+        "details": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)",
+        "rating": 2
+    },
+    {
+        "image": "https://media.istockphoto.com/id/1455269900/photo/close-up-of-the-face-of-beautiful-tanned-woman-with-dark-hair-and-expressive-brown-eyes-looks.jpg?s=612x612&w=0&k=20&c=mSHSJ9wFhl8FzWZ2OlM050eF36wusKs50UCxznc7_QQ=",
+        "name": "MJ Doe",
+        "details": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)",
+        "rating": 5
+    },
+    {
+        "image": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "name": "Sarah Smith",
+        "details": "I found the product to be incredibly useful and easy to use. The interface is intuitive, and it has all the features I need. Highly recommend it!",
+        "rating": 4
+    },
+    {
+        "image": "https://img.freepik.com/free-photo/medium-shot-male-flight-attendant-posing_23-2150312701.jpg?w=360&t=st=1717010854~exp=1717011454~hmac=70ffc3434f83f132558fced7d17a3cabf4127c3ba24e1922416b40262d773847",
+        "name": "Robert Johnson",
+        "details": "This is by far the best service I have ever used. The customer support is outstanding, and the product itself is top-notch. I couldn't be happier!",
+        "rating": 5
+    }
+]

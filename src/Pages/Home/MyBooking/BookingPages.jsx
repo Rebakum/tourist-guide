@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Modal from 'react-modal';
 import { AuthContext } from '../../../AuthProvider/AuthProvider';
 import useAxiosSecure from '../../../Hook/useAxiosSecure';
@@ -14,6 +14,7 @@ const BookingPages = ({ tour }) => {
     const navigate = useNavigate();
     const [tourDate, setTourDate] = useState(null);
     const [selectedGuideName, setSelectedGuideName] = useState('');  // Add this line
+    const [selectedGuideEmail, setSelectedGuideEmail] = useState('');  // Add this line
     const [selectedPrice, setSelectedPrice] = useState('');
     const [selectedDay, setSelectedDay] = useState('');
     const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -49,9 +50,13 @@ const BookingPages = ({ tour }) => {
             touristImage: user.photoURL,
             tourDate: tourDate?.toISOString(),  // Use toISOString() instead of toJSONString()
             guideName: selectedGuideName,
+            guideEmail: selectedGuideEmail,
             price: selectedPrice,
-            day: selectedDay
+            day: selectedDay,
+            status: 'In review' 
+            
         };
+        console.log(bookingData)
 
         try {
             const response = await axiosSecure.post('/bookings', bookingData);
@@ -99,7 +104,7 @@ const BookingPages = ({ tour }) => {
                     <div className="w-1/2 p-2">
                         <label className="block text-white mb-2">Tourist Image</label>
                         <img
-                            src={user?.photoURL || <FaUser/>}
+                            src={user?.photoURL || <FaUser />}
                             alt="Tourist"
                             className="w-16 h-16 rounded-full"
                         />
@@ -114,11 +119,11 @@ const BookingPages = ({ tour }) => {
                             className="w-full p-2 border rounded-lg"
                         >
                             <option value="">Select a price plan</option>
-                            {tourPlan?.map(plan => (
+                            {tourPlan?.map(plan => 
                                 <option key={plan.name} value={plan.price}> {/* Change the value to plan.price */}
                                     {plan.name} {plan.price}
                                 </option>
-                            ))}
+                            )}
                         </select>
                     </div>
                     <div className="w-1/2 p-2">
@@ -137,6 +142,7 @@ const BookingPages = ({ tour }) => {
                         </select>
                     </div>
                 </div>
+                <div>
                 <div className="mb-4 p-2">
                     <label className="block text-white mb-2">Tour Guide Name</label>
                     <select
@@ -144,7 +150,7 @@ const BookingPages = ({ tour }) => {
                         onChange={e => setSelectedGuideName(e.target.value)}  // Add this line
                         className="w-full p-2 border rounded-lg"
                     >
-                        <option value="">Select a guide</option>
+                        <option value="">Select a guide Name</option>
                         {guides?.map(guide => (
                             <option key={guide._id} value={guide.guideName}>  {/* Set the value attribute to guide.guideName */}
                                 {guide.guideName}  {/* Display the guide name */}
@@ -152,14 +158,38 @@ const BookingPages = ({ tour }) => {
                         ))}
                     </select>
                 </div>
-                <div className="mb-4 p-2">
-                    <label className="block text-white mb-2">Tour Date</label>
-                    <DatePicker
-                        selected={tourDate}
-                        onChange={date => setTourDate(date)}
+                <div>
+                <div  className="mb-4 p-2">
+                    <label className="block text-white mb-2">Tour Guide Email</label>
+                    <select
+                   
+                        value={selectedGuideEmail}  // Set the value attribute
+                        onChange={e => setSelectedGuideEmail(e.target.value)}  // Add this line
                         className="w-full p-2 border rounded-lg"
-                    />
+                    >
+                        <option value="">Select a guide Email</option>
+                        {guides?.map(guide => (
+                            <option key={guide._id} value={guide.guideEmail}>  {/* Set the value attribute to guide.guideName */}
+                                {guide.guideEmail}  {/* Display the guide name */}
+                            </option>
+                        ))}
+                    </select>
                 </div>
+                </div>
+                </div>
+                <div>
+                    <div className="mb-4 p-2 flex justify-center items-center">
+                        <label className="block text-white mb-2">Tour Date </label>
+                        <DatePicker
+                            selected={tourDate}
+                            onChange={date => setTourDate(date)}
+                            className="w-full p-2 border rounded-lg"
+                        />
+                    </div>                  
+                    
+                    
+                </div>
+
                 <div className="p-2">
                     <button
                         type="submit"
@@ -183,9 +213,12 @@ const BookingPages = ({ tour }) => {
                 <p><strong>Tourist Name:</strong> {user?.displayName}</p>
                 <p><strong>Tour Date:</strong> {tourDate?.toLocaleDateString()}</p>
                 <p><strong>Guide Name:</strong> {selectedGuideName}</p>
+                <p><strong>Guide Email:</strong> {selectedGuideEmail}</p>
+                <p><strong>Status:</strong>   {'In review'} </p>
                 <p><strong>Price:</strong> ${selectedPrice}</p>
                 <p><strong>Day:</strong> {selectedDay}</p>
                 <div className="flex justify-end mt-4">
+
                     <button
                         onClick={confirmBooking}  // Add confirmBooking function call
                         className="bg-green-500 text-white px-4 py-2 rounded-lg mr-2"

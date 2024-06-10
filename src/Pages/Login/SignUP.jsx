@@ -21,6 +21,7 @@ const SignUP = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = (data) => {
         const { email, password, name, photoURL } = data;
+        
         if (passwordChecker.test(password)) {
             createUser(email, password)
                 .then(result => {
@@ -30,8 +31,11 @@ const SignUP = () => {
                             const userInfo = {
                                 name: name,
                                 email: email,
-                                photoURL: photoURL
+                                photoURL: photoURL,
+                                status: 'inreview'
+                                
                             }
+                            console.log(userInfo)
                             axiosPublic.post('/users', userInfo)
                                 .then(res => {
                                     if (res.data.insertedId)

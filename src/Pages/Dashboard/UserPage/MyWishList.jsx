@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import useTour from "../../../Hook/useTour";
-import SectionTitle from "../../../Shared/Navbar/SectionTitle";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hook/useAxiosSecure";
 
@@ -35,12 +34,17 @@ const MyWishList = () => {
 
     return (
         <>
-            <SectionTitle
-                subheading="T&T is a specific category"
-                heading="My Wishlist"
-                className="my-10"
-            />
+           <div>
+            <helmet>
+                <title>T & T || My Wishlist</title>
+            </helmet>
+           </div>
             <div className="overflow-x-auto">
+            <div className="flex justify-center items-center flex-col">
+                <h2 className="text-3xl text-center my-10 font-bold border-t-2 border-b-2 w-52 py-2">
+                  My Wistlist
+                </h2>
+            </div>
                 <table className="table">
                     <thead className="bg-cyan-950 opacity-70 text-white uppercase text-lg">
                         <tr>

@@ -15,9 +15,9 @@ import MyBooking from '../Pages/Dashboard/UserPage/MyBooking';
 import AddPakage from '../Pages/Dashboard/Admin/AddPakage';
 import AdminProfile from "../Pages/Dashboard/Admin/AdminProfile";
 import MyAssigned from "../Pages/Dashboard/Guide/MyAssigned";
-import GuideProfile from "../Pages/Dashboard/Guide/GuideProfile";
 import UserProfile from "../Pages/Dashboard/UserPage/UserProfile";
-
+import GuideDetails from "../Pages/Dashboard/Guide/GuideDetails";
+import GuideProfile from "../Pages/Dashboard/Guide/GuideProfile"
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -87,9 +87,12 @@ export const router = createBrowserRouter([
         element: <MyAssigned />,
       },
       {
-        path: 'guideProfile/:id',
+        path: 'guideDetails/:id',
+        element: <GuideDetails />,
+      },
+      {
+        path: 'guideProfile',
         element: <GuideProfile />
-        // loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/guides/${params.id}`)
       }
     ]
   }

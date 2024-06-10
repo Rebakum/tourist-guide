@@ -18,7 +18,7 @@ const TourGuideCard = ({ guide }) => {
           </div>
         </div>
         <p>{position}</p>
-        <Link to={`/dashboard/guideProfile/${_id}`}>
+        <Link to={`/dashboard/guideDetails/${_id}`}>
           <button  className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">
             Details
           </button>

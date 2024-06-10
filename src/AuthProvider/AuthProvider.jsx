@@ -1,7 +1,9 @@
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile, } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
-import {  GoogleAuthProvider,  } from "firebase/auth";
+import { GoogleAuthProvider, } from "firebase/auth";
 import auth from "../firebaseConfig";
+import useAxiosPublic from "../Hook/useAxiosPublic";
+import axios from "axios";
 
 
 export const AuthContext = createContext(null);
@@ -14,6 +16,7 @@ const googleProvider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true)
+    const axiosPublic = useAxiosPublic();
     // console.log(currentUser)
 
     //-------createUser------
@@ -41,9 +44,9 @@ const AuthProvider = ({ children }) => {
             displayName: name,
             photoURL: photo
         })
-           
+
     };
-   
+
 
     //------logout-------
     const logOut = () => {
@@ -54,14 +57,39 @@ const AuthProvider = ({ children }) => {
 
     //----- observer----
     useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
-            setLoading(false)
-            setUser(user)
+        const unsubsccribe = onAuthStateChanged(auth, (user) => {
+
+            // console.log('currentUser', user)
+            if (user) {
+                //get token store client
+                const userInfo = { email: user.email };
+                axiosPublic.post('/jwt', userInfo)
+                    .then(res => {
+
+                        if (res.data.token) {
+                            localStorage.setItem('access-token', res.data.token);
+                            setUser(user)
+                            setLoading(false)
+                        }
+                    })
+
+            } else {
+                //TODO: remove token
+                setUser(user)
+                setLoading(false)
+                localStorage.removeItem('access-token')
+            }
+
+
 
         });
+        return () => {
+            unsubsccribe()
+        }
 
 
-    }, [loading])
+
+    }, [axiosPublic])
 
 
     const allValue = {

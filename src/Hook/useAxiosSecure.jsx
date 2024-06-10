@@ -6,6 +6,25 @@ import axios from "axios";
     withCredentials: true,
 })
 const useAxiosSecure = () => {
-    return axiosSecure
+    axiosSecure.interceptors.request.use(function(config){
+        const token = localStorage.getItem('access-token')
+        console.log('request stoppted by interceptors', token)
+        config.headers.authorization = `Bearer ${token}`
+        return config
+    }, function(error){
+        return Promise.reject(error);
+    });
+    // interceptor 401, 403 
+   axiosSecure.interceptors.response.use(function(response){
+
+        return response;
+    }, (error)=>{
+        console.log('status error in the interceptor', error)
+       return Promise.reject(error);
+    })
+   
+
+    return axiosSecure;
 }
 export default useAxiosSecure;
+

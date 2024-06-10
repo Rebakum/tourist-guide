@@ -28,6 +28,7 @@ const TabTourist = () => {
                     referrerPolicy="strict-origin-when-cross-origin"
                     allowFullScreen>
                 </iframe>
+                
             </TabPanel>
             <TabPanel>
                 <TourList></TourList>
