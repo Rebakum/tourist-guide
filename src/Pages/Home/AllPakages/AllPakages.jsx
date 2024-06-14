@@ -1,48 +1,52 @@
-import { useEffect, useState } from "react";
+
 import AllPakesCard from "./AllPakagesCard/AllPakesCard";
 import { Helmet } from "react-helmet";
 import SectionTitle from "../../../Shared/Navbar/SectionTitle";
-import axios from "axios";
+import LoadingSpinner from "../../../Shared/Navbar/Loading/LoadingSpinner";
+import useAxiosSecure from "../../../Hook/useAxiosSecure";
+import { useLocation } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 
 
 const AllPakages = () => {
-    const [tours, setTours] = useState([]);
+    const axiosSecure = useAxiosSecure()
+   
+   
+    
 
-    useEffect(() => {
-        const getData = async () =>{
-            const {data} = await axios(`${import.meta.env.VITE_API_URL}/tours`)
-            setTours(data);
-        }
-        getData()
-       
-       
-            
+    
+    const { data: tours = [], isLoading } = useQuery({
+        queryKey: ['tours', ],
+        queryFn: async () => {
+            const { data } = await axiosSecure.get('/tours');
+            return data;
+        },
+    });
 
-    }, []);
+    if (isLoading) return <LoadingSpinner />;
+
     return (
-        <>
-        <Helmet>
-            <title>
-                T & T || ALL PAKAGE
-            </title>
-        </Helmet>
-            <div className="py-20">
-                <SectionTitle
-                    subheading="T&T is a specific category"
-                    heading=" ALL pakages Tourism and Travel Guide"
-                    description="Although many people think travel and tourism are synonymous with hospitality, that’s not quite the case. More accurately, T&T is a specific category within the hospitality industry."></SectionTitle>
-            
-            <div className="grid lg:grid-cols-3 md:grid-cols-2  grid-cols-1 gap-5">
-                {
-                    tours.map(tour => <AllPakesCard key={tour._id} tour={tour}></AllPakesCard>
-
-                    )
-                }
-            </div>
-            </div>
-
-        </>
-    )
-}
+        <div>
+            <Helmet>
+                <title>T & T || Our Package</title>
+            </Helmet>
+            <SectionTitle
+                subheading="T & T"
+                heading="Our Package"
+                description="Explore breathtaking destinations with our all-inclusive tour package, featuring guided excursions, comfortable accommodations, and immersive cultural experiences."
+            />
+            {tours && tours.length > 0 ? (
+                <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
+                     {tours.map(tour => (
+                        <AllPakesCard key={tour._id} tour={tour} />
+                    ))}
+                </div>
+            ) : (
+                <p>No tours found</p>
+            )}
+           
+        </div>
+    );
+};
 
 export default AllPakages;

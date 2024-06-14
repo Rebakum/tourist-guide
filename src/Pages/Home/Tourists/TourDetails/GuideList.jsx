@@ -16,7 +16,7 @@ const GuideList = () => {
 
     return (
         <div className="overflow-x-auto">
-            <h2 className="text-center text-2xl font-bold">Our Guide List</h2>
+            <h2 className=" text-2xl font-bold my-3">Our Guide List:</h2>
             <table className="table">
                 {/* head */}
                 <thead className="text-xl font-bold bg-cyan-900 text-white">
@@ -26,12 +26,12 @@ const GuideList = () => {
                         <th>Experience</th>
                     </tr>
                 </thead>
-                <tbody className="bg-cyan-200">
+                <tbody className="">
                     {guides.map((guide, index) => (
                         <tr 
                             key={guide._id}
-                            onClick={() => navigate(`/dashboard/guideProfile/${guide._id}`)}
-                            className="cursor-pointer"
+                            onClick={() => navigate(`/dashboard/guideDetails/${guide._id}`)}
+                            className="cursor-pointer bg-cyan-700 text-white"
                         >
                             <th>{index + 1}</th>
                             <td>{guide.guideName}</td>

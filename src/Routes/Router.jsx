@@ -38,7 +38,7 @@ export const router = createBrowserRouter([
         loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/tour/${params.id}`)
       },
       {
-        path: '/allPakages',
+        path: '/allPackages',
         element: <AllPakages />,
       },
       {
@@ -74,13 +74,14 @@ export const router = createBrowserRouter([
         element: <ManageUser />,
       },
       {
-        path: 'addPakage',
+        path: 'addPackage',
         element: <AddPakage />,
       },
       {
         path: 'adminProfile',
         element: <AdminProfile />,
       },
+     
       // Guide routes
       {
         path: 'myAssigned',

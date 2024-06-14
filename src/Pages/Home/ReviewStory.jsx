@@ -9,7 +9,7 @@ import '@smastrom/react-rating/style.css'
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import LoadingSpinner from "../../Shared/Navbar/Loading/LoadingSpinner";
-import SectionTitle from '../../Shared/Navbar/SectionTitle';
+
 
 const ReviewStory = () => {
     const axiosSecure = useAxiosSecure();
@@ -31,7 +31,7 @@ const ReviewStory = () => {
             <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
 
                 {
-                    reviewsStory.map(review => <SwiperSlide
+                    reviewsStory?.map(review => <SwiperSlide
                         key={review._id}
 
                     >

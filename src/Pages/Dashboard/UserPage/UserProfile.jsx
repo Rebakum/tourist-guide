@@ -16,7 +16,7 @@ const Profile = () => {
         <title>Profile</title>
       </Helmet>
       
-      <div className='bg-white shadow-lg rounded-2xl w-3/5'>
+      <div className='bg-white shadow-lg rounded-2xl w-full md:w-3/5'>
         <img
           alt='profile'
           src='https://img.freepik.com/premium-photo/empty-background-scene-dark-street-reflection-wet-asphalt-rays-neon-light-dark-neon-figures-smoke-background-empty-stage-show-abstract-dark-background_183410-31.jpg?w=900'

@@ -1,10 +1,12 @@
+// import PaginationUser from './PaginationUser';
 import logo from '/logo.png'
 import { NavLink } from 'react-router-dom';
 
 const Footer = () => {
     return (
-        <footer className="bg-cyan-950 opacity-80 text-white mb-0 py-10">
-            <div className="container mx-auto px-4">
+        <footer className="bg-cyan-950 opacity-80 mb-0 py-10">
+            {/* <PaginationUser></PaginationUser>  */}
+            <div className="container mx-auto text-white  px-4">
                 <div className="flex flex-wrap justify-between">
                     <div className="w-full md:w-1/3 mb-4 md:mb-0">
                         <img className='size-24 rounded-full' src={logo} alt="" />
@@ -32,6 +34,7 @@ const Footer = () => {
                 <div className="text-center mt-6">
                     <p>&copy; {new Date().getFullYear()} Tourist Guide. All Rights Reserved.</p>
                 </div>
+                
             </div>
         </footer>
     );
@@ -40,33 +43,3 @@ const Footer = () => {
 export default Footer;
 
 
-// <footer className="footer p-10 bg-cyan-950  text-white ">
-//     <aside>
-//         <img className='size-24 rounded-full' src={logo} alt="" />
-//         <p>Tourist guid.<br />Providing reliable tech since 1992</p>
-//     </aside>
-//     <nav>
-//         <h6 className="footer-title">Services</h6>
-//         <a className="link link-hover">Branding</a>
-//         <a className="link link-hover">Design</a>
-//         <a className="link link-hover">Marketing</a>
-//         <a className="link link-hover">Advertisement</a>
-//     </nav>
-//     <nav>
-//         <h6 className="footer-title">Company</h6>
-//         <a className="link link-hover">About us</a>
-//         <a className="link link-hover">Contact</a>
-//         <a className="link link-hover">Jobs</a>
-//         <a className="link link-hover">Press kit</a>
-//     </nav>
-//     <nav>
-//         <h6 className="footer-title">Legal</h6>
-//         <a className="link link-hover">Terms of use</a>
-//         <a className="link link-hover">Privacy policy</a>
-//         <a className="link link-hover">Cookie policy</a>
-//     </nav>
-// </footer>
-//     );
-// };
-
-// export default Footer;

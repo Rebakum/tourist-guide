@@ -14,6 +14,7 @@ Currently, two official plugins are available:
 -- gitHub client side: (https://github.com/programming-hero-web-course1/b9a12-client-side-Rebakum)
 -- gitHub server side: (https://github.com/programming-hero-web-course1/b9a12-server-side-Rebakum)
 -- live link: (https://tourist-guide-3bd84.firebaseapp.com)
+-- vercel link: https://tourist-guide-server-hazel.vercel.app
 
 ## My Project:  T & T 
 ## admin email:alam@gmail.com
