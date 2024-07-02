@@ -1,6 +1,7 @@
 # React + Vite
 ## Run for localhost:
-```Replace all api key in .env file
+```
+-Replace all api key in .env file
 -clone:https://github.com/Rebakum/tourist-guide
 -clone:https://github.com/Rebakum/tourist-guide-server
 -npm i
