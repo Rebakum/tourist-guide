@@ -1,12 +1,21 @@
 # React + Vite
+## Run for localhost:
+```
+-clone:https://github.com/Rebakum/tourist-guide
+-clone:https://github.com/Rebakum/tourist-guide-server
+-npm i
+-npm run dev
+```
+##Feture:
+Interactive Maps and Routes: Provide users with interactive maps that highlight popular tourist attractions, routes, and points of interest.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Offline Access: Allow users to download maps, guides, and essential information for offline use, ensuring accessibility in remote areas without internet connection.
 
-Currently, two official plugins are available:
+Personalized Recommendations: Offer personalized recommendations based on user preferences, such as historical sites, restaurants, or outdoor activities.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Multilingual Support: Support multiple languages to accommodate international travelers and enhance accessibility.
 
+Reviews and Ratings: Enable users to leave reviews and ratings for attractions, restaurants, and hotels, helping future travelers make informed decisions.
 
 --Assignment12_category_0003
 
