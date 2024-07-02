@@ -7,16 +7,41 @@
 -npm i
 -npm run dev
 ```
-##Feture:
-Interactive Maps and Routes: Provide users with interactive maps that highlight popular tourist attractions, routes, and points of interest.
+##Features:
+Tourist Spots Showcase:
 
-Offline Access: Allow users to download maps, guides, and essential information for offline use, ensuring accessibility in remote areas without internet connection.
+Display at least 6 notable tourist spots from Southeast Asian countries like Thailand, Indonesia, Malaysia, Vietnam, etc.
+Each spot includes an image, name, average cost, total visitors per year, travel time, and seasonality.
+User Authentication:
 
-Personalized Recommendations: Offer personalized recommendations based on user preferences, such as historical sites, restaurants, or outdoor activities.
+Implement password and email-based authentication for users to log in and register.
+Include options for Google login and possibly another social media login (e.g., GitHub/Facebook/Twitter).
+Private Routes:
 
-Multilingual Support: Support multiple languages to accommodate international travelers and enhance accessibility.
+Ensure private/protected routes for certain functionalities like adding tourist spots, viewing personal lists, and updating/deleting entries.
+Users should remain authenticated across private route interactions without being redirected to the login page upon reload.
+CRUD Operations:
 
-Reviews and Ratings: Enable users to leave reviews and ratings for attractions, restaurants, and hotels, helping future travelers make informed decisions.
+Create forms and functionalities for adding, updating, and deleting tourist spots.
+Use modal dialogs for updates or separate pages as per preference.
+Sorting Functionality:
+
+Implement sorting of tourist spots on the "All Tourists Spot" page based on average cost, allowing users to choose ascending or descending order.
+Responsive Design:
+
+Ensure the website is responsive across mobile, tablet, and desktop views for optimal user experience.
+Dark/Light Theme Toggle:
+
+Provide users with a theme toggle option on the home page to switch between dark and light themes.
+Additional Requirements:
+Loading Spinner: Display a loading spinner when data is loading, enhancing user experience.
+404 Page: Include a custom 404/Not Found page for user-friendly navigation.
+Footer: Create a meaningful footer with website information, copyright, contact details, and social media links.
+These features and requirements aim to create a comprehensive and user-friendly tourism management website focusing on Southeast Asia, meeting the specified criteria and enhancing user engagement and experience.
+
+
+
+
 
 --Assignment12_category_0003
 
@@ -34,6 +59,7 @@ Reviews and Ratings: Enable users to leave reviews and ratings for attractions, 
 ## guide password: re@1234
 
 ## implement this project:
+```
 --https://reactrouter.com/en/main/start/tutorial
 --https://www.mongodb.com/products/platform/atlas-database
 --https://console.firebase.google.com/project
@@ -48,6 +74,7 @@ Reviews and Ratings: Enable users to leave reviews and ratings for attractions, 
 --https://www.npmjs.com/package/react-rating
 --https://react-icons.github.io/react-icons
 --https://swiperjs.com/react
+```
 
 
 
