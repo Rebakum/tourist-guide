@@ -47,9 +47,9 @@ These features and requirements aim to create a comprehensive and user-friendly 
 
 -- My Project Name : T & T /Tourrist guide
 <br>
--- gitHub client side: (https://github.com/programming-hero-web-course1/b9a12-client-side-Rebakum)
+-- gitHub client side:( https://github.com/Rebakum/tourist-guide)
 <br>
--- gitHub server side: (https://github.com/programming-hero-web-course1/b9a12-server-side-Rebakum) 
+-- gitHub server side: (https://github.com/Rebakum/tourist-guide-server)
 <br>
 -- live link: (https://tourist-guide-3bd84.firebaseapp.com) 
 <br>
